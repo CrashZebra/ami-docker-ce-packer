@@ -2,9 +2,9 @@
   "variables": {
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_source_ami": "ami-597d553c",
-    "aws_ami_name": "ubuntu-docker-ce-base",
-    "ssh_username": "ubuntu"
+    "aws_source_ami": "ami-e97c548c",
+    "aws_ami_name": "amzn2-docker-ce-base",
+    "ssh_username": "ec2-user"
   },
   "builders": [
     {
@@ -34,8 +34,8 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "bootstrap_ubuntu_docker_ce.sh",
-      "destination": "/tmp/bootstrap_ubuntu_docker_ce.sh"
+      "source": "bootstrap_amzn2_docker_ce.sh",
+      "destination": "/tmp/bootstrap_amzn2_docker_ce.sh"
     },
     {
       "type": "file",
@@ -48,10 +48,10 @@
       "inline": [
         "whoami",
         "cd /tmp",
-        "chmod +x bootstrap_ubuntu_docker_ce.sh",
+        "chmod +x bootstrap_amzn2_docker_ce.sh",
         "chmod +x cleanup.sh",
         "ls -alh /tmp",
-        "./bootstrap_ubuntu_docker_ce.sh",
+        "./bootstrap_amzn2_docker_ce.sh",
         "sleep 10",
         "./cleanup.sh"
       ]
